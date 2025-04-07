@@ -1,40 +1,33 @@
-// no need to touch anything in here
-
-public class Item
+// DiscountedItem inherits from Item
+public class DiscountedItem extends Item
 {
-    private String name;
-    private double price;
+    // Instance variable for the discount
+    private double discount;
 
-    public Item()
+    // Constructor with name, price, and discount
+    public DiscountedItem(String name, double price, double discount)
     {
-        this.name = "";
-        this.price = 0.0;
+        super(name, price);
+        this.discount = discount;
     }
 
-    public Item(String name, double price)
+    // Getter for discount
+    @Override
+    public double getDiscount()
     {
-        this.name = name;
-        this.price = price;
+        return discount;
     }
 
-    public double getPrice()
+    // Setter for discount
+    public void setDiscount(double discount)
     {
-        return price;
+        this.discount = discount;
     }
 
-    public String valueToString(double value)
-    {
-        String result = "" + Math.abs(value);
-        if (result.indexOf(".") == result.length() - 2)
-        {
-            result += "0";
-        }
-        result = "$" + result;
-        return result;
-    }
-
+    // toString method that shows the base price and discount
+    @Override
     public String toString()
     {
-        return name + " " + valueToString(price);
+        return super.toString() + " (- " + super.valueToString(discount) + ")";
     }
 }

@@ -1,16 +1,33 @@
 // DiscountedItem inherits from Item
 public class DiscountedItem extends Item
 {
-    // add an instance variable for the discount
+    // instance variable for the discount
+    private double discount;
 
-    // Add constructors that call the super constructor
-
-    // Add get/set methods for discount
-    public double getDiscount()
+    // Constructor with name, price, and discount
+    public DiscountedItem(String name, double price, double discount)
     {
-        return 0.0; // return discount here instead of 0
+        super(name, price);
+        this.discount = discount;
     }
 
-    // Add a toString() method that returns a call to the super toString
-    // and then the discount in parentheses using the super.valueToString() method
+    // Getter for discount
+    @Override
+    public double getDiscount()
+    {
+        return discount;
+    }
+
+    // Setter for discount
+    public void setDiscount(double discount)
+    {
+        this.discount = discount;
+    }
+
+    // toString method that includes discount
+    @Override
+    public String toString()
+    {
+        return super.toString() + " (" + "-" + super.valueToString(discount) + ")";
+    }
 }
